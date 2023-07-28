@@ -18,7 +18,7 @@ import {
   Roboto_500Medium,
 } from "@expo-google-fonts/roboto";
 
-import SvgComponent from "./components/SvgComponent";
+import SvgComponent from "../components/SvgComponent";
 
 export default function RegistrationScreen({
   isShownKeyboard,
