@@ -172,6 +172,7 @@ const styles = StyleSheet.create({
 
   input: {
     fontFamily: "Roboto_400Regular",
+    fontSize: 16,
 
     borderRadius: 10,
     borderStyle: "solid",
@@ -213,15 +214,16 @@ const styles = StyleSheet.create({
     marginBottom: 132,
   },
   linkUnderlined: {
+    fontSize: 16,
     textDecorationLine: "underline",
     textDecorationStyle: "solid",
-    textDecorationColor: "#000",
+    textDecorationColor: "#1b4371",
   },
-  homeIndicator: {
-    width: 134,
-    height: 5,
-    borderRadius: 100,
-    background: "black",
-    marginBottom: 8,
-  },
+  // homeIndicator: {
+  //   width: 134,
+  //   height: 5,
+  //   borderRadius: 100,
+  //   background: "black",
+  //   marginBottom: 8,
+  // },
 });

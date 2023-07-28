@@ -157,9 +157,6 @@ export default function RegistrationScreen({
               <Text style={styles.btnTitle}>Зареєстуватися</Text>
             </Pressable>
             <Text style={styles.linkTitle}>Вже є акаунт? Увійти</Text>
-            <View style={styles.homeIndicator}>
-              <Text>kjhkh</Text>
-            </View>
           </KeyboardAvoidingView>
         </View>
       </TouchableWithoutFeedback>
@@ -194,18 +191,11 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     backgroundColor: "#f6f6f6",
     resizeMode: "cover",
-    marginTop: "-30%",
+    // marginTop: "-30%",
+    marginTop: -110,
     marginLeft: "auto",
     marginRight: "auto",
     position: "relative",
-  },
-  iconWrapper: {
-    width: 25,
-    height: 25,
-    position: "absolute",
-    right: 0,
-    bottom: 14,
-    transform: [{ translateX: 12 }],
   },
 
   title: {
@@ -219,6 +209,7 @@ const styles = StyleSheet.create({
 
   input: {
     fontFamily: "Roboto_400Regular",
+    fontSize: 16,
 
     borderRadius: 10,
     borderStyle: "solid",
@@ -259,11 +250,11 @@ const styles = StyleSheet.create({
     lineHeight: 19,
     marginBottom: 66,
   },
-  homeIndicator: {
-    width: 134,
-    height: 5,
-    borderRadius: 100,
-    background: "black",
-    marginBottom: 8,
-  },
+  // homeIndicator: {
+  //   width: 134,
+  //   height: 5,
+  //   borderRadius: 100,
+  //   background: "black",
+  //   marginBottom: 8,
+  // },
 });
