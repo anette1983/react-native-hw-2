@@ -1,138 +1,47 @@
 import React, { useState } from "react";
-import { StatusBar } from "expo-status-bar";
+
 import {
   StyleSheet,
-  Text,
-  Alert,
-  Button,
-  View,
   Keyboard,
-  KeyboardAvoidingView,
   TouchableWithoutFeedback,
   ImageBackground,
-  TextInput,
-  Pressable,
-  TouchableOpacity,
 } from "react-native";
-// import * as Font from "expo-font";
 
-// import { AppLoading } from "expo";
-import {
-  useFonts,
-  Roboto_400Regular,
-  Roboto_500Medium,
-} from "@expo-google-fonts/roboto";
+import RegistrationScreen from "./Screens/RegistrationScreen";
+import LoginScreen from "./Screens/LoginScreen";
+import PostsScreen from "./Screens/PostsScreen";
 
 export default function App() {
-  const [login, setLogin] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [isShownKeyboard, setIsShownKeyboard] = useState(false);
-  const loginHandler = (text) => setLogin(text);
-  const passwordHandler = (text) => setPassword(text);
-  const emailHandler = (text) => setEmail(text);
-
-  const reset = () => {
-    setLogin("");
-    setEmail("");
-    setPassword("");
-  };
-
-  const onRegister = () => {
-    if (!login || !email || !password) {
-      Alert.alert("Fill in all the fields!");
-      return;
-    }
-    Alert.alert("Credentials", `${login} + ${password} + ${email}`);
-    setIsShownKeyboard(false);
-    Keyboard.dismiss();
-    reset();
-  };
-
   const onPressWithoutFeedback = () => {
     setIsShownKeyboard(false);
     Keyboard.dismiss();
   };
 
-  const [fontsLoaded] = useFonts({
-    Roboto_400Regular,
-    Roboto_500Medium,
-  });
-
-  if (!fontsLoaded) {
-    return null;
-  }
-
   return (
     <>
-      <View style={styles.mainContainer}>
+      <TouchableWithoutFeedback
+        style={styles.mainContainer}
+        onPress={onPressWithoutFeedback}
+      >
         <ImageBackground
           source={require("./assets/images/bg-image.png")}
           style={styles.image}
-          // style={{ flex: 1, width: null, height: null }}
+          resizeMode="cover"
         >
-          <TouchableWithoutFeedback onPress={onPressWithoutFeedback}>
-            <View
-              style={{
-                ...styles.form,
-                marginBottom: isShownKeyboard ? -162 : 0,
-              }}
-            >
-              <KeyboardAvoidingView
-                behavior={Platform.OS == "ios" ? "padding" : "height"}
-                // keyboardVerticalOffset={-50}
-              >
-                <View style={styles.avatarWrapper}></View>
-                <Text style={styles.title}>Реєстрація</Text>
-                <TextInput
-                  style={styles.input}
-                  placeholder="login"
-                  placeholderTextColor={"#BDBDBD"}
-                  name="login"
-                  value={login}
-                  onChangeText={loginHandler}
-                  onFocus={() => setIsShownKeyboard(true)}
-                />
-                <TextInput
-                  style={{ ...styles.input, marginTop: 16 }}
-                  placeholder="email"
-                  placeholderTextColor={"#BDBDBD"}
-                  name="email"
-                  value={email}
-                  onChangeText={emailHandler}
-                  onFocus={() => setIsShownKeyboard(true)}
-                />
-                <TextInput
-                  style={{ ...styles.input, marginTop: 16 }}
-                  placeholder="password"
-                  placeholderTextColor={"#BDBDBD"}
-                  name="password"
-                  value={password}
-                  onChangeText={passwordHandler}
-                  secureTextEntry={true}
-                  onFocus={() => setIsShownKeyboard(true)}
-                />
-                <Pressable
-                  title={"Register"}
-                  style={({ pressed }) => [
-                    {
-                      backgroundColor: pressed ? "#c75502" : "#FF6C00",
-                    },
-                    styles.btn,
-                  ]}
-                  onPress={onRegister}
-                >
-                  <Text style={styles.btnTitle}>Зареєстуватися</Text>
-                </Pressable>
-                <Text style={styles.linkTitle}>Вже є акаунт? Увійти</Text>
-                <View style={styles.homeIndicator}>
-                  <Text>kjhkh</Text>
-                </View>
-              </KeyboardAvoidingView>
-            </View>
-          </TouchableWithoutFeedback>
+          <RegistrationScreen
+            isShownKeyboard={isShownKeyboard}
+            setIsShownKeyboard={setIsShownKeyboard}
+          />
+
+          {/* <LoginScreen
+            isShownKeyboard={isShownKeyboard}
+            setIsShownKeyboard={setIsShownKeyboard}
+          /> */}
+
+          {/* <PostsScreen /> */}
         </ImageBackground>
-      </View>
+      </TouchableWithoutFeedback>
     </>
   );
 }
@@ -144,23 +53,19 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    resizeMode: "cover",
     justifyContent: "flex-end",
-    // alignItems: "center",
   },
 
   form: {
     marginTop: 263,
-    // marginBottom: -147,
+
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
 
-    // width: "100%",
-    // height: "100%",
     backgroundColor: "white",
     paddingBottom: 8,
     paddingTop: 50,
-    // marginHorizontal: 16,
+
     paddingHorizontal: 16,
   },
 
@@ -199,7 +104,6 @@ const styles = StyleSheet.create({
   },
 
   btn: {
-    // backgroundColor: "#FF6C00",
     alignItems: "center",
     maxWidth: "100%",
     paddingVertical: 16,
